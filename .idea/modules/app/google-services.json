@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "583292870175",
+    "firebase_url": "https://goodchat-d1cc9.firebaseio.com",
+    "project_id": "goodchat-d1cc9",
+    "storage_bucket": "goodchat-d1cc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583292870175:android:bf4453f627d4bf7836ff2a",
+        "android_client_info": {
+          "package_name": "com.example.goodchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583292870175-emc88s91polr7rsvpvjee4u9tf97j4um.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goodchat",
+            "certificate_hash": "c15fd9aed284a827e67c37d234e92baa8b976b4a"
+          }
+        },
+        {
+          "client_id": "583292870175-2p4r35cmjn0cu6em7jtqdoo8917km4dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl1JOOR76HC2tY91yaHT9qU2HbeXDCWm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583292870175-2p4r35cmjn0cu6em7jtqdoo8917km4dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "70967733",
+    "firebase_url": "https://goodchat-2d563.firebaseio.com",
+    "project_id": "goodchat-2d563",
+    "storage_bucket": "goodchat-2d563.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70967733:android:e18b69079f6831252239fc",
+        "android_client_info": {
+          "package_name": "com.example.goodchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70967733-bea274s1a6jq00mb9voifdis42occqgo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0t2cHl7P-geVZS8GxJOJPTFl1GPYeWuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70967733-bea274s1a6jq00mb9voifdis42occqgo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
