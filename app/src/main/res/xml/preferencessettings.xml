@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:title="User Settings"/>
+    <Preference
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_profile"
+        android:key="profile"/>
+    <Preference
+        android:title="Language"
+        android:icon="@drawable/ic_baseline_language_24"/>
+
+    <CheckBoxPreference
+        android:title="French"
+        android:key="french" />
+    <CheckBoxPreference
+        android:title="English"
+        android:key="english" />
+
+    <CheckBoxPreference
+        android:title="Spanish"
+        android:key="spanish" />
+
+    <Preference
+        android:title="Logout"
+        android:icon="@drawable/ic_baseline_logout"/>
+
+    <Preference
+        android:title="Log Out"
+        android:key="logout"/>
+    <Preference
+        android:title="About"
+        android:key="about"/>
+</PreferenceScreen>

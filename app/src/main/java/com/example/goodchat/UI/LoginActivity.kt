@@ -11,10 +11,13 @@ import com.example.goodchat.R
 import com.example.goodchat.databinding.ActivityLoginBinding
 import com.example.goodchat.models.UserDetails
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
@@ -25,12 +28,19 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var mAuth : FirebaseAuth
     private lateinit var binding : ActivityLoginBinding
+    private lateinit var storage : FirebaseStorage
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
 
         mAuth = FirebaseAuth.getInstance()
+        storage = FirebaseStorage.getInstance()
+
+        if(mAuth.currentUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
 
         binding.signinbtn.setOnClickListener {
             UserSignIn()
@@ -50,27 +60,25 @@ class LoginActivity : AppCompatActivity() {
         if(password.length < 6 ){
             binding.passwordSignin.error = "Weak Password.."
         }else {
-            password_signin.error = null
+            password_signin.error = ""
             binding.signinprogress.visibility = View.VISIBLE
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    delay(2000)
+                   delay(2000)
                     mAuth.signInWithEmailAndPassword(email,password).await()
-                    var database = FirebaseDatabase.getInstance()
-                    database.getReference("Users").addListenerForSingleValueEvent(object : ValueEventListener{
-                        override fun onCancelled(p0: DatabaseError) {
-                            Timber.d("Error is " + p0.message)
+
+                    FirebaseDatabase.getInstance().getReference("Users").addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onCancelled(error: DatabaseError) {
+                            Timber.d("Error is ${error.message}")
                         }
 
-                        override fun onDataChange(p0: DataSnapshot) {
-                            for(snapshot in p0.children){
+                        override fun onDataChange(snapShot : DataSnapshot) {
+                            for(snapshot in snapShot.children){
                                 var userDetails = snapshot.getValue(UserDetails::class.java)
                                 binding.signinprogress.visibility = View.INVISIBLE
                                 Toast.makeText(this@LoginActivity,"User Successfully Logged", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@LoginActivity,MainActivity::class.java)
-                                    .putExtra("user",userDetails!!.username))
+                                startActivity(Intent(this@LoginActivity,MainActivity::class.java))
                             }
-
                         }
                     })
 
@@ -93,15 +101,5 @@ class LoginActivity : AppCompatActivity() {
          startActivity(Intent(this,ForgetPaswordActivity::class.java))
      }
     }
-
-    override fun onStart() {
-        super.onStart()
-        var currentUser = mAuth.currentUser
-        if(currentUser != null){
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-    }
-
-
 
 }
